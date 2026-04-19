@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +14,7 @@
             --accent-yellow: #FFE600;
             --accent-green: #37FFB4;
             --text-white: #FFFFFF;
+            --text-dim: rgba(255, 255, 255, 0.7);
             --glass-border: rgba(255, 255, 255, 0.1);
         }
 
@@ -32,11 +33,10 @@
             min-height: 100vh;
             color: var(--text-white);
             line-height: 1.6;
-            padding: 4rem 2rem;
-            display: flex;
-            justify-content: center;
+            padding: 2rem 1rem;
         }
 
+        /* Pattern di semi delle carte in background */
         body::before {
             content: "";
             position: fixed;
@@ -44,49 +44,65 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M30 10c-2.2 0-4 1.8-4 4 0 2 2.5 5 4 6 1.5-1 4-4 4-6 0-2.2-1.8-4-4-4zm0 30c2.2 0 4-1.8 4-4 0-2-2.5-5-4-6-1.5 1-4 4-4 6 0-2.2 1.8 4 4 4zM10 30c0 2.2 1.8 4 4 4 2 0 5-2.5 6-4-1-1.5-4-4-4-4-2.2 0-4 1.8-4 4zm40 0c0-2.2-1.8-4-4-4-2 0-5 2.5-6 4 1 1.5 4 4 4 4 2.2 0 4-1.8 4-4z'/%3E%3C/g%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M30 10c-2.2 0-4 1.8-4 4 0 2 2.5 5 4 6 1.5-1 4-4 4-6 0-2.2-1.8-4-4-4zm0 30c2.2 0 4-1.8 4-4 0-2-2.5-5-4-6-1.5 1-4 4-4 6 0 2.2 1.8 4 4 4zM10 30c0 2.2 1.8 4 4 4 2 0 5-2.5 6-4-1-1.5-4-4-4-4-2.2 0-4 1.8-4 4zm40 0c0-2.2-1.8-4-4-4-2 0-5 2.5-6 4 1 1.5 4 4 4 4 2.2 0 4-1.8 4-4z'/%3E%3C/g%3E%3C/svg%3E");
             z-index: -1;
         }
 
         .container {
-            width: 100%;
             max-width: 800px;
+            margin: 0 auto;
             animation: fadeIn 0.8s ease-out;
         }
 
-        .policy-card {
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            transition: transform 0.2s;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent-yellow);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px rgba(255, 230, 0, 0.4);
+        }
+
+        .effective-date {
+            color: var(--text-dim);
+            font-style: italic;
+        }
+
+        .content-card {
             background: var(--card-bg);
             backdrop-filter: blur(12px);
             border: 1px solid var(--glass-border);
             border-radius: 30px;
             padding: 3rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            text-align: left;
-        }
-
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: var(--accent-yellow);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-            text-align: center;
-        }
-
-        .effective-date {
-            text-align: center;
-            opacity: 0.6;
-            font-size: 0.9rem;
-            margin-bottom: 3rem;
-            display: block;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
         }
 
         h2 {
             color: var(--accent-green);
-            font-size: 1.4rem;
             margin-top: 2rem;
             margin-bottom: 1rem;
+            font-size: 1.5rem;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -94,45 +110,44 @@
 
         h2::before {
             content: "◆";
-            font-size: 0.8rem;
-            opacity: 0.5;
+            color: var(--accent-yellow);
+            font-size: 1rem;
         }
 
-        p, li {
-            margin-bottom: 1rem;
-            opacity: 0.9;
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--text-white);
         }
 
         ul {
-            margin-left: 1.5rem;
             margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            list-style-type: none;
+        }
+
+        li {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+
+        li::before {
+            content: "•";
+            color: var(--accent-yellow);
+            position: absolute;
+            left: -1.2rem;
+            font-weight: bold;
         }
 
         strong {
-            color: var(--accent-green);
-            font-weight: 700;
-        }
-
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
             color: var(--accent-yellow);
-            text-decoration: none;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            transition: transform 0.3s ease;
-        }
-
-        .back-btn:hover {
-            transform: translateX(-5px);
         }
 
         .footer {
-            margin-top: 3rem;
+            margin-top: 4rem;
             text-align: center;
-            font-size: 0.8rem;
-            opacity: 0.5;
+            font-size: 0.9rem;
+            opacity: 0.6;
+            letter-spacing: 1px;
         }
 
         @keyframes fadeIn {
@@ -141,76 +156,68 @@
         }
 
         @media (max-width: 600px) {
-            .policy-card { padding: 1.5rem; }
-            h1 { font-size: 1.8rem; }
+            .content-card {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="index.html" class="back-btn">← Torna alla Home</a>
+        <a href="index.html" class="back-link">← Back to Home</a>
         
-        <div class="policy-card">
-            <h1>Informativa sulla Privacy</h1>
-            <span class="effective-date">Solitaire Pulse • Data di efficacia: 19 aprile 2026</span>
+        <div class="header">
+            <h1>Privacy Policy</h1>
+            <p class="effective-date">Effective Date: April 19, 2026</p>
+        </div>
 
-            <section>
-                <h2>1. Introduzione</h2>
-                <p>La presente Informativa sulla Privacy descrive come <strong>Solitaire Pulse</strong> ("noi", "l'App") raccoglie, utilizza e protegge le informazioni personali degli utenti. La protezione dei tuoi dati è una nostra priorità.</p>
-            </section>
+        <div class="content-card">
+            <h2>1. Introduction</h2>
+            <p>This Privacy Policy describes how <strong>Solitaire Pulse</strong> ("we", "the App") collects, uses, and protects your personal information. Protecting your data is our priority.</p>
 
-            <section>
-                <h2>2. Dati Raccolti</h2>
-                <p>Per fornire le funzionalità di gioco online, l'App raccoglie le seguenti categorie di dati:</p>
-                <ul>
-                    <li><strong>Informazioni dell'Account:</strong> Indirizzo email e nickname forniti durante la registrazione o il login (tramite il servizio Supabase).</li>
-                    <li><strong>Dati di Gioco:</strong> Record, punteggi, trofei sbloccati, cronologia delle transazioni virtuali e inventario degli oggetti di gioco.</li>
-                    <li><strong>Dati Tecnici:</strong> Informazioni di base sul dispositivo per scopi di compatibilità e sicurezza.</li>
-                </ul>
-            </section>
+            <h2>2. Data Collected</h2>
+            <p>To provide online gaming features, the App collects the following categories of data:</p>
+            <ul>
+                <li><strong>Account Information:</strong> Email address and nickname provided during registration or login (via the Supabase service).</li>
+                <li><strong>Gameplay Data:</strong> Records, scores, unlocked trophies, virtual transaction history, and game item inventory.</li>
+                <li><strong>Technical Data:</strong> Basic device information for compatibility and security purposes.</li>
+            </ul>
 
-            <section>
-                <h2>3. Finalità del Trattamento</h2>
-                <p>I dati vengono raccolti esclusivamente per:</p>
-                <ul>
-                    <li>Consentire la creazione e la gestione dell'account utente.</li>
-                    <li>Sincronizzare i progressi di gioco tra diversi dispositivi.</li>
-                    <li>Gestire le classifiche globali e il sistema di trofei.</li>
-                    <li>Fornire supporto tecnico e prevenire attività fraudolente.</li>
-                </ul>
-            </section>
+            <h2>3. Purpose of Processing</h2>
+            <p>Data is collected exclusively to:</p>
+            <ul>
+                <li>Enable the creation and management of user accounts.</li>
+                <li>Synchronize game progress across different devices.</li>
+                <li>Manage global leaderboards and the trophy system.</li>
+                <li>Provide technical support and prevent fraudulent activities.</li>
+            </ul>
 
-            <section>
-                <h2>4. Condivisione dei Dati con Terze Parti</h2>
-                <p>Solitaire Pulse non vende né affitta i tuoi dati personali a terzi. Utilizziamo i seguenti fornitori di servizi per il funzionamento dell'App:</p>
-                <ul>
-                    <li><strong>Supabase:</strong> Utilizzato come backend per l'autenticazione e il database. I dati sono conservati in modo sicuro secondo gli standard di privacy di Supabase.</li>
-                </ul>
-            </section>
+            <h2>4. Sharing Data with Third Parties</h2>
+            <p>Solitaire Pulse does not sell or rent your personal data to third parties. We use the following service providers for the operation of the App:</p>
+            <ul>
+                <li><strong>Supabase:</strong> Used as a backend for authentication and database services. Data is stored securely according to Supabase’s privacy standards.</li>
+            </ul>
 
-            <section>
-                <h2>5. Sicurezza dei Dati</h2>
-                <p>Adottiamo misure di sicurezza tecniche e organizzative per proteggere i tuoi dati da accessi non autorizzati o perdite accidentali.</p>
-            </section>
+            <h2>5. Data Security</h2>
+            <p>We adopt technical and organizational security measures to protect your data from unauthorized access or accidental loss.</p>
 
-            <section>
-                <h2>6. Diritti dell'Utente</h2>
-                <p>In conformità con le leggi vigenti (come il GDPR), hai il diritto di:</p>
-                <ul>
-                    <li>Accedere ai dati personali in nostro possesso.</li>
-                    <li>Richiedere la correzione di dati errati.</li>
-                    <li>Richiedere la cancellazione definitiva del tuo account e di tutti i dati associati (tramite le impostazioni dell'app o contattando il supporto).</li>
-                </ul>
-            </section>
+            <h2>6. User Rights</h2>
+            <p>In accordance with applicable laws (such as GDPR), you have the right to:</p>
+            <ul>
+                <li>Access your personal data in our possession.</li>
+                <li>Request the correction of incorrect data.</li>
+                <li>Request the permanent deletion of your account and all associated data (via app settings or by contacting support).</li>
+            </ul>
 
-            <section>
-                <h2>7. Contatti</h2>
-                <p>Per qualsiasi domanda riguardante la presente Informativa o per esercitare i tuoi diritti, puoi contattarci all'indirizzo email del tuo account sviluppatore oppure agli indirizzi ufficiali di <strong>LaterNightLab</strong>.</p>
-            </section>
+            <h2>7. Contact Us</h2>
+            <p>For any questions regarding this Policy or to exercise your rights, you can contact us at our developer account email address.</p>
         </div>
 
         <div class="footer">
-            &copy; 2026 LATERNIGHTLAB • Tutti i diritti riservati.
+            &copy; 2026 LATERNIGHTLAB
         </div>
     </div>
 </body>

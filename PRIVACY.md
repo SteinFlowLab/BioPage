@@ -1,41 +1,41 @@
-# Informativa sulla Privacy - Solitaire Pulse
-**Data di efficacia: 19 aprile 2026**
+# Privacy Policy - Solitaire Pulse
+**Effective Date:** April 19, 2026
 
-## 1. Introduzione
-La presente Informativa sulla Privacy descrive come **Solitaire Pulse** ("noi", "l'App") raccoglie, utilizza e protegge le informazioni personali degli utenti. La protezione dei tuoi dati è una nostra priorità.
+## 1. Introduction
+This Privacy Policy describes how **Solitaire Pulse** ("we", "the App") collects, uses, and protects your personal information. Protecting your data is our priority.
 
-## 2. Dati Raccolti
-Per fornire le funzionalità di gioco online, l'App raccoglie le seguenti categorie di dati:
+## 2. Data Collected
+To provide online gaming features, the App collects the following categories of data:
 
-*   **Informazioni dell'Account:** Indirizzo email e nickname forniti durante la registrazione o il login (tramite il servizio Supabase).
-*   **Dati di Gioco:** Record, punteggi, trofei sbloccati, cronologia delle transazioni virtuali e inventario degli oggetti di gioco.
-*   **Dati Tecnici:** Informazioni di base sul dispositivo per scopi di compatibilità e sicurezza.
+- **Account Information:** Email address and nickname provided during registration or login (via the Supabase service).
+- **Gameplay Data:** Records, scores, unlocked trophies, virtual transaction history, and game item inventory.
+- **Technical Data:** Basic device information for compatibility and security purposes.
 
-## 3. Finalità del Trattamento
-I dati vengono raccolti esclusivamente per:
+## 3. Purpose of Processing
+Data is collected exclusively to:
 
-1.  Consentire la creazione e la gestione dell'account utente.
-2.  Sincronizzare i progressi di gioco tra diversi dispositivi.
-3.  Gestire le classifiche globali e il sistema di trofei.
-4.  Fornire supporto tecnico e prevenire attività fraudolente.
+- Enable the creation and management of user accounts.
+- Synchronize game progress across different devices.
+- Manage global leaderboards and the trophy system.
+- Provide technical support and prevent fraudulent activities.
 
-## 4. Condivisione dei Dati con Terze Parti
-Solitaire Pulse non vende né affitta i tuoi dati personali a terzi. Utilizziamo i seguenti fornitori di servizi per il funzionamento dell'App:
+## 4. Sharing Data with Third Parties
+Solitaire Pulse does not sell or rent your personal data to third parties. We use the following service providers for the operation of the App:
 
-*   **Supabase:** Utilizzato come backend per l'autenticazione e il database. I dati sono conservati in modo sicuro secondo gli standard di privacy di Supabase.
+- **Supabase:** Used as a backend for authentication and database services. Data is stored securely according to Supabase’s privacy standards.
 
-## 5. Sicurezza dei Dati
-Adottiamo misure di sicurezza tecniche e organizzative per proteggere i tuoi dati da accessi non autorizzati o perdite accidentali.
+## 5. Data Security
+We adopt technical and organizational security measures to protect your data from unauthorized access or accidental loss.
 
-## 6. Diritti dell'Utente
-In conformità con le leggi vigenti (come il GDPR), hai il diritto di:
+## 6. User Rights
+In accordance with applicable laws (such as GDPR), you have the right to:
 
-*   Accedere ai dati personali in nostro possesso.
-*   Richiedere la correzione di dati errati.
-*   Richiedere la cancellazione definitiva del tuo account e di tutti i dati associati (tramite le impostazioni dell'app o contattando il supporto).
+- Access your personal data in our possession.
+- Request the correction of incorrect data.
+- Request the permanent deletion of your account and all associated data (via app settings or by contacting support).
 
-## 7. Contatti
-Per qualsiasi domanda riguardante la presente Informativa o per esercitare i tuoi diritti, puoi contattarci all'indirizzo email del tuo account sviluppatore.
+## 7. Contact Us
+For any questions regarding this Policy or to exercise your rights, you can contact us at our developer account email address.
 
 ---
 © 2026 LATERNIGHTLAB
