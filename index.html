@@ -54,6 +54,37 @@
             z-index: -1;
         }
 
+        /* Top Bar Positioning */
+        .top-nav {
+            display: flex;
+            justify-content: flex-start;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .nav-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 12px 24px;
+            text-decoration: none;
+            color: var(--text-white);
+            font-weight: 900;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-btn:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 229, 255, 0.15);
+        }
+
         .container {
             max-width: 1200px;
             width: 100%;
@@ -286,6 +317,10 @@
 </head>
 <body>
     <div class="container">
+        <nav class="top-nav">
+            <a href="index.html" class="nav-btn">Later Night Lab</a>
+        </nav>
+
         <header>
             <img src="LNL icon.png" alt="Later Night Lab Logo" class="lab-logo">
             <h1>Later Night Lab</h1>
@@ -332,10 +367,9 @@
         </main>
 
         <footer>
-            <div class="brand-footer">STEINFLOW.LAB / LATERNIGHTLAB</div>
+            <div class="brand-footer">LATERNIGHTLAB</div>
             <div class="footer-links">
                 <a href="privacy.html">Privacy (SP)</a>
-                <a href="https://discord.gg/g4S7uSXyVY">Discord</a>
             </div>
         </footer>
     </div>
