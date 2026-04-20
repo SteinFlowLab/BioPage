@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solitaire Pulse - Game Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #073B3A;
+            --card-bg: rgba(30, 77, 82, 0.85);
+            --accent-yellow: #FFE600;
+            --accent-green: #37FFB4;
+            --text-white: #FFFFFF;
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(55, 255, 180, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(255, 230, 0, 0.05) 0%, transparent 40%);
+            min-height: 100vh;
+            color: var(--text-white);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M30 10c-2.2 0-4 1.8-4 4 0 2 2.5 5 4 6 1.5-1 4-4 4-6 0-2.2-1.8-4-4-4zm0 30c2.2 0 4-1.8 4-4 0-2-2.5-5-4-6-1.5 1-4 4-4 6 0 2.2 1.8 4 4 4zM10 30c0 2.2 1.8 4 4 4 2 0 5-2.5 6-4-1-1.5-4-4-4-4-2.2 0-4 1.8-4 4zm40 0c0-2.2-1.8-4-4-4-2 0-5 2.5-6 4 1 1.5 4 4 4 4 2.2 0 4-1.8 4-4z'/%3E%3C/g%3E%3C/svg%3E");
+            z-index: -1;
+        }
+
+        /* Back Button */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-white);
+            font-weight: 700;
+            gap: 10px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+            width: fit-content;
+            margin-bottom: 2rem;
+        }
+
+        .back-btn:hover {
+            background: rgba(30, 77, 82, 1);
+            border-color: var(--accent-green);
+            transform: translateX(-5px);
+        }
+
+        .back-btn img {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+        }
+
+        .back-btn span {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .game-icon {
+            width: 180px;
+            height: 180px;
+            border-radius: 40px;
+            object-fit: cover;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            margin-bottom: 1rem;
+            border: 3px solid var(--glass-border);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--accent-yellow);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(255, 230, 0, 0.4);
+        }
+
+        /* Main Content Grid */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr 300px;
+            gap: 2rem;
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Columns */
+        .sidebar-left, .content-center, .sidebar-right {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* Section Cards */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h2 {
+            font-size: 1.2rem;
+            color: var(--accent-green);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card h2::before {
+            content: "◆";
+            font-size: 0.8rem;
+            opacity: 0.5;
+        }
+
+        .card p {
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* Smaller Link Cards */
+        .link-card-small {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 0.8rem 1rem;
+            text-decoration: none;
+            color: var(--text-white);
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .link-card-small:hover {
+            background: rgba(55, 255, 180, 0.1);
+            border-color: var(--accent-green);
+            transform: scale(1.02);
+        }
+
+        /* Screenshot Placeholders */
+        .screenshot-placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px dashed var(--glass-border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.3);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 4rem;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.6;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding-bottom: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+            .sidebar-left, .sidebar-right {
+                order: 2;
+            }
+            .content-center {
+                order: 1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            .game-icon { width: 140px; height: 140px; }
+            body { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-btn">
+        <img src="LNL icon.png" alt="LNL Logo">
+        <span>LaterNightLab</span>
+    </a>
+
+    <header>
+        <img src="SP icon.png" alt="Solitaire Pulse Icon" class="game-icon">
+        <h1>Solitaire Pulse</h1>
+    </header>
+
+    <main class="main-grid">
+        <!-- Sidebar Left: Links -->
+        <aside class="sidebar-left">
+            <div class="card">
+                <h2>Official Stores</h2>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <a href="https://laternightlab.itch.io/solitaire-pulse" class="link-card-small" target="_blank">
+                        Itch.io <span>→</span>
+                    </a>
+                    <a href="https://gamejolt.com/games/solitarepulse/1051936" class="link-card-small" target="_blank">
+                        Game Jolt <span>→</span>
+                    </a>
+                    <a href="https://discord.gg/g4S7uSXyVY" class="link-card-small" target="_blank">
+                        Discord <span>→</span>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Center: Game Info -->
+        <section class="content-center">
+            <div class="card">
+                <h2>Description</h2>
+                <p>Welcome to Solitaire Pulse, a high-octane twist on the classic card game. Experience fast-paced gameplay, vibrant visual effects, and a modern aesthetic that brings Solitaire into a new era of energy and competition.</p>
+            </div>
+            
+            <div class="card">
+                <h2>How to Play</h2>
+                <p>The goal is to move all cards to the four foundation piles, organized by suit from Ace to King. Build sequences in the tableau by alternating colors and decreasing rank. Use the draw pile to find more cards and keep the pulse going!</p>
+            </div>
+
+            <div class="card">
+                <h2>Economy & Market</h2>
+                <p>Discover a unique in-game market where you can unlock custom card decks, special themes, and powerful boosters. Earn rewards as you play and customize your Solitaire experience to match your style.</p>
+            </div>
+        </section>
+
+        <!-- Sidebar Right: Gallery -->
+        <aside class="sidebar-right">
+            <div class="card">
+                <h2>Gallery</h2>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <div class="screenshot-placeholder">Screenshot #1 Soon</div>
+                    <div class="screenshot-placeholder">Screenshot #2 Soon</div>
+                    <div class="screenshot-placeholder">Screenshot #3 Soon</div>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        &copy; 2026 STEINFLOW.LAB
+    </footer>
+</body>
+</html>
