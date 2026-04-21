@@ -53,7 +53,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 16px;
+            padding: 8px;
             background: var(--card-bg);
             border: 1px solid var(--glass-border);
             border-radius: 16px;
@@ -74,9 +74,9 @@
         }
 
         .back-btn img {
-            width: 50px;
-            height: 50px;
-            border-radius: 10px;
+            width: 64px;
+            height: 64px;
+            border-radius: 12px;
         }
 
         /* Header */
@@ -196,8 +196,12 @@
             font-size: 1.05rem;
         }
 
-        .screenshot-container {
-            flex: 0 0 45%;
+        .screenshot-container img {
+            width: 100%;
+            border-radius: 16px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: block;
         }
 
         /* Screenshot Placeholders */
@@ -273,7 +277,7 @@
                 <p>Welcome to Solitaire Pulse, a high-octane twist on the classic card game. Experience fast-paced gameplay, vibrant visual effects, and a modern aesthetic that brings Solitaire into a new era of energy and competition.</p>
             </div>
             <div class="screenshot-container">
-                <div class="screenshot-placeholder">Feature Highlights</div>
+                <img src="SP Screenshot1.png" alt="Solitaire Pulse Feature Highlight">
             </div>
         </article>
         
