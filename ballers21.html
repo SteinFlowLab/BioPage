@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,7 +42,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M30 10c-2.2 0-4 1.8-4 4 0 2 2.5 5 4 6 1.5-1 4-4 4-6 0-2.2-1.8-4-4-4zm0 30c2.2 0 4-1.8 4-4 0-2-2.5-5-4-6-1.5 1-4 4-4 6 0 2.2 1.8 4 4 4zM10 30c0 2.2 1.8 4 4 4 2 0 5-2.5 6-4-1-1.5-4-4-4-4-2.2 0-4 1.8-4 4zm40 0c0-2.2-1.8-4-4-4-2 0-5 2.5-6 4 1 1.5 4 4 4 4 2.2 0 4-1.8 4-4z'/%3E%3C/g%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 20 L20 0 M20 40 L40 20 M20 0 L40 20 M0 20 L20 40' stroke='%23ffffff' stroke-opacity='0.02' fill='none'/%3E%3C/svg%3E");
             z-index: -1;
         }
 
@@ -279,14 +280,18 @@
 
         /* Responsive */
         @media (max-width: 900px) {
-            .card, .card.reverse {
+
+            .card,
+            .card.reverse {
                 flex-direction: column;
                 padding: 1.5rem;
                 gap: 1.5rem;
             }
+
             .screenshot-container {
                 width: 100%;
             }
+
             .top-bar {
                 flex-direction: column;
                 gap: 1rem;
@@ -294,19 +299,30 @@
         }
 
         @media (max-width: 600px) {
-            h1 { font-size: 2.5rem; }
-            .app-icon { width: 140px; height: 140px; }
-            body { padding: 1rem; }
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .app-icon {
+                width: 140px;
+                height: 140px;
+            }
+
+            body {
+                padding: 1rem;
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="top-bar">
         <a href="index.html" class="back-btn" style="margin-bottom: 0;">
             <img src="LNL icon.webp" alt="Later Night Lab Logo">
         </a>
         <div class="header-links">
-            <a href="https://baller21-ijuixl106-mrgamer92-5059s-projects.vercel.app" class="link-box" target="_blank">Vercel</a>
+            <a href="https://baller21-ijuixl106-mrgamer92-5059s-projects.vercel.app" class="link-box"
+                target="_blank">Vercel</a>
         </div>
     </div>
 
@@ -321,15 +337,17 @@
             <div class="card-content">
                 <h2>The court finally has a scorekeeper</h2>
                 <p>
-                    You know the 21. Everyone's played it — but keeping score has always been a mess. Who's at how many? Whose turn is it? Did he really score that?
+                    You know the 21. Everyone's played it — but keeping score has always been a mess. Who's at how many?
+                    Whose turn is it? Did he really score that?
                     <br><br>
                     <strong style="color: var(--accent-orange);">Baller21 fixes that for good.</strong>
                     <br><br>
-                    Built by a baller, for ballers — Baller21 is the dedicated scorekeeper for the most iconic street basketball game ever played. No more arguments. No more mental math. Just ball.
+                    Baller21 is the dedicated scorekeeper for the most iconic street basketball game ever played. No
+                    more arguments. No more mental math. Just ball.
                 </p>
             </div>
             <div class="screenshot-container">
-                <img src="B21 Screenshot1.webp" alt="Ballers21 App Interface">
+                <div class="screenshot-placeholder">Screenshot #1 Soon</div>
             </div>
         </article>
 
@@ -342,7 +360,8 @@
                         <span class="feature-icon">🏀</span>
                         <div class="feature-info">
                             <h4>Individual or team mode</h4>
-                            <p>Play solo or split into squads — Baller21 handles the rotation automatically so you never lose track of whose turn it is.</p>
+                            <p>Play solo or split into squads — Baller21 handles the rotation automatically so you never
+                                lose track of whose turn it is.</p>
                         </div>
                     </div>
                     <div class="feature-item">
@@ -365,7 +384,7 @@
                 <div class="screenshot-placeholder">Screenshot #2 Soon</div>
             </div>
         </article>
-        
+
         <!-- CARD 3: Conclusion (screenshot dx) -->
         <article class="card">
             <div class="card-content">
@@ -386,4 +405,5 @@
         &copy; 2026 LATERNIGHTLAB — A project by MrGamer92
     </footer>
 </body>
+
 </html>
