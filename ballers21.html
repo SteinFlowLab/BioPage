@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ballers21 - Scorekeeper App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #08090a;
+            --card-bg: rgba(255, 255, 255, 0.02);
+            --accent-orange: #ff5f1f;
+            --text-main: #ffffff;
+            --text-body: #6b7280;
+            --glass-border: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            min-height: 100vh;
+            color: var(--text-main);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M30 10c-2.2 0-4 1.8-4 4 0 2 2.5 5 4 6 1.5-1 4-4 4-6 0-2.2-1.8-4-4-4zm0 30c2.2 0 4-1.8 4-4 0-2-2.5-5-4-6-1.5 1-4 4-4 6 0 2.2 1.8 4 4 4zM10 30c0 2.2 1.8 4 4 4 2 0 5-2.5 6-4-1-1.5-4-4-4-4-2.2 0-4 1.8-4 4zm40 0c0-2.2-1.8-4-4-4-2 0-5 2.5-6 4 1 1.5 4 4 4 4 2.2 0 4-1.8 4-4z'/%3E%3C/g%3E%3C/svg%3E");
+            z-index: -1;
+        }
+
+        /* Back Button */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            width: fit-content;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-btn:hover {
+            border-color: var(--accent-orange);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 95, 31, 0.15);
+        }
+
+        .back-btn img {
+            width: 64px;
+            height: 64px;
+            border-radius: 12px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .app-icon {
+            width: 180px;
+            height: 180px;
+            border-radius: 40px;
+            object-fit: cover;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            margin-bottom: 1rem;
+            border: 3px solid var(--glass-border);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 150%;
+            height: 150%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(255, 95, 31, 0.15) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Header Bar: Back Button + Links */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto 0.5rem auto;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .link-box {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            padding: 6px 12px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 0.85rem;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+
+        .link-box:hover {
+            border-color: var(--accent-orange);
+            background: rgba(255, 95, 31, 0.1);
+        }
+
+        /* Standardized Header */
+        header {
+            text-align: center;
+            margin: 2rem 0 4rem 0;
+        }
+
+        /* Content Sections Layout */
+        .main-column {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .card.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .card-content {
+            flex: 1;
+        }
+
+        .card h2 {
+            font-size: 1.4rem;
+            color: var(--accent-orange);
+            text-transform: uppercase;
+            margin-bottom: 1.2rem;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h2::before {
+            content: "◆";
+            font-size: 0.9rem;
+            opacity: 0.6;
+        }
+
+        .card p {
+            line-height: 1.8;
+            color: var(--text-body);
+            font-size: 1.05rem;
+        }
+
+        .screenshot-container {
+            flex: 0 0 45%;
+        }
+
+        .screenshot-container img {
+            width: 100%;
+            border-radius: 16px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: block;
+        }
+
+        /* Screenshot Placeholders */
+        .screenshot-placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px dashed var(--glass-border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.3);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        /* Feature Lists */
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            font-size: 1.4rem;
+            line-height: 1;
+            margin-top: 2px;
+        }
+
+        .feature-info h4 {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 0.3rem;
+        }
+
+        .feature-info p {
+            font-size: 0.95rem !important;
+            line-height: 1.5 !important;
+            color: var(--text-body);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 4rem;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.6;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding-bottom: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .card, .card.reverse {
+                flex-direction: column;
+                padding: 1.5rem;
+                gap: 1.5rem;
+            }
+            .screenshot-container {
+                width: 100%;
+            }
+            .top-bar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            .app-icon { width: 140px; height: 140px; }
+            body { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="index.html" class="back-btn" style="margin-bottom: 0;">
+            <img src="LNL icon.webp" alt="Later Night Lab Logo">
+        </a>
+        <div class="header-links">
+            <a href="https://baller21-ijuixl106-mrgamer92-5059s-projects.vercel.app" class="link-box" target="_blank">Vercel</a>
+        </div>
+    </div>
+
+    <header>
+        <img src="B21 Screenshot1.webp" alt="Ballers21 Icon" class="app-icon">
+        <h1>Ballers21</h1>
+    </header>
+
+    <main class="main-column">
+        <!-- CARD 1: Introduction (screenshot dx) -->
+        <article class="card">
+            <div class="card-content">
+                <h2>The court finally has a scorekeeper</h2>
+                <p>
+                    You know the 21. Everyone's played it — but keeping score has always been a mess. Who's at how many? Whose turn is it? Did he really score that?
+                    <br><br>
+                    <strong style="color: var(--accent-orange);">Baller21 fixes that for good.</strong>
+                    <br><br>
+                    Built by a baller, for ballers — Baller21 is the dedicated scorekeeper for the most iconic street basketball game ever played. No more arguments. No more mental math. Just ball.
+                </p>
+            </div>
+            <div class="screenshot-container">
+                <img src="B21 Screenshot1.webp" alt="Ballers21 App Interface">
+            </div>
+        </article>
+
+        <!-- CARD 2: Features (screenshot sx) -->
+        <article class="card reverse">
+            <div class="card-content">
+                <h2>Built for the Court</h2>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <span class="feature-icon">🏀</span>
+                        <div class="feature-info">
+                            <h4>Individual or team mode</h4>
+                            <p>Play solo or split into squads — Baller21 handles the rotation automatically so you never lose track of whose turn it is.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📊</span>
+                        <div class="feature-info">
+                            <h4>Live leaderboard</h4>
+                            <p>See the ranking update in real time as the game unfolds. Every point counts.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">⏱️</span>
+                        <div class="feature-info">
+                            <h4>Timer & match point alerts</h4>
+                            <p>Set your game duration and let Baller21 call the tension when someone's close to 21.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="screenshot-container">
+                <div class="screenshot-placeholder">Screenshot #2 Soon</div>
+            </div>
+        </article>
+        
+        <!-- CARD 3: Conclusion (screenshot dx) -->
+        <article class="card">
+            <div class="card-content">
+                <h2>Ready to play?</h2>
+                <p>
+                    Clean. Fast. Built for the court.
+                    <br><br>
+                    No login. No setup. Open the app, add your players, and play.
+                </p>
+            </div>
+            <div class="screenshot-container">
+                <div class="screenshot-placeholder">Screenshot #3 Soon</div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        &copy; 2026 LATERNIGHTLAB — A project by MrGamer92
+    </footer>
+</body>
+</html>
